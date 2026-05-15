@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a Question / General Discussion
+    url: https://github.com/Mananwebdev160408/dbportal/discussions
+    about: Use GitHub Discussions for questions, ideas, and general conversation.
+  - name: Read the Docs
+    url: https://github.com/Mananwebdev160408/dbportal#readme
+    about: Check the README before opening an issue — your question may already be answered.

@@ -24,14 +24,14 @@ It starts a local Express server, detects connections from `DATABASE_URL` and op
 
 ## Supported databases
 
-| Protocol | Database | Example |
-| --- | --- | --- |
-| `postgres://`, `postgresql://` | PostgreSQL | `postgres://user:pass@localhost:5432/app` |
-| `mongodb://`, `mongodb+srv://` | MongoDB | `mongodb://localhost:27017/app` |
-| `mysql://`, `mariadb://` | MySQL / MariaDB | `mysql://root:pass@localhost:3306/app` |
-| `sqlite:` | SQLite | `sqlite:./data/app.sqlite` |
-| `mssql://`, `sqlserver://` | SQL Server | `mssql://sa:pass@localhost:1433/master` |
-| `redis://`, `rediss://` | Redis | `redis://localhost:6379` |
+| Protocol                       | Database        | Example                                   |
+| ------------------------------ | --------------- | ----------------------------------------- |
+| `postgres://`, `postgresql://` | PostgreSQL      | `postgres://user:pass@localhost:5432/app` |
+| `mongodb://`, `mongodb+srv://` | MongoDB         | `mongodb://localhost:27017/app`           |
+| `mysql://`, `mariadb://`       | MySQL / MariaDB | `mysql://root:pass@localhost:3306/app`    |
+| `sqlite:`                      | SQLite          | `sqlite:./data/app.sqlite`                |
+| `mssql://`, `sqlserver://`     | SQL Server      | `mssql://sa:pass@localhost:1433/master`   |
+| `redis://`, `rediss://`        | Redis           | `redis://localhost:6379`                  |
 
 ## Main features
 
@@ -134,13 +134,13 @@ npm run build
 
 ```json
 {
-   "query": {
-      "collection": "users",
-      "filter": { "status": "active" },
-      "projection": { "name": 1, "email": 1 },
-      "sort": { "createdAt": -1 },
-      "limit": 25
-   }
+  "query": {
+    "collection": "users",
+    "filter": { "status": "active" },
+    "projection": { "name": 1, "email": 1 },
+    "sort": { "createdAt": -1 },
+    "limit": 25
+  }
 }
 ```
 
@@ -148,14 +148,14 @@ npm run build
 
 ```json
 {
-   "query": {
-      "collection": "orders",
-      "pipeline": [
-         { "$match": { "status": { "$exists": true } } },
-         { "$group": { "_id": "$status", "total": { "$sum": 1 } } },
-         { "$sort": { "total": -1 } }
-      ]
-   }
+  "query": {
+    "collection": "orders",
+    "pipeline": [
+      { "$match": { "status": { "$exists": true } } },
+      { "$group": { "_id": "$status", "total": { "$sum": 1 } } },
+      { "$sort": { "total": -1 } }
+    ]
+  }
 }
 ```
 
@@ -175,4 +175,3 @@ npm run build
 ## License
 
 MIT © Manan Gupta
-
