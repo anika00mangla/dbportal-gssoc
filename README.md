@@ -4,6 +4,8 @@
 
 It starts a local Express server, detects connections from `DATABASE_URL` and optional `DATABASE_URL_1` to `DATABASE_URL_10`, then opens a React dashboard for inspection and analysis.
 
+### 🗺️ [View the Project Roadmap (Kanban Board)](https://github.com/users/Mananwebdev160408/projects/2)
+
 ## What it does
 
 - Connects to PostgreSQL, MongoDB, MySQL/MariaDB, SQLite, SQL Server, and Redis.
@@ -171,6 +173,12 @@ npm run build
 - `frontend/` React UI source and build output
 - `bin/cli.js` executable launcher
 - `dist/` compiled package artifacts
+
+## Contributors
+
+<a href="https://github.com/Mananwebdev160408/dbportal/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Mananwebdev160408/dbportal" />
+</a>
 
 ## License
 
