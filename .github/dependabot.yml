@@ -11,7 +11,6 @@ updates:
         patterns:
           - "*"
     ignore:
-      # Ignore major version bumps to avoid breaking changes
       - dependency-name: "typescript"
         update-types: ["version-update:semver-major"]
 
