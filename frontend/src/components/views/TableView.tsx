@@ -1,6 +1,30 @@
 import { useState } from "react";
 import EmptyState from "../EmptyState";
 
+const exportCSV = (rows: Record<string, unknown>[], columns: string[]) => {
+  const header = columns.join(",");
+  const csvRows = rows.map((row) =>
+    columns
+      .map((col) => {
+        const val = row[col] ?? "";
+        const str =
+          typeof val === "object" ? JSON.stringify(val) : String(val);
+        return `"${str.replace(/"/g, '""')}"`;
+      })
+      .join(","),
+  );
+  const csvString = [header, ...csvRows].join("\n");
+  const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+  const url = window.URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.setAttribute("download", "export.csv");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  window.URL.revokeObjectURL(url);
+};
+
 interface TableViewProps {
   rows: Record<string, unknown>[];
   sortBy?: string;
@@ -54,11 +78,26 @@ export default function TableView({
   };
 
   return (
-    <div className="table-view-container">
-      <div
-        className="table-responsive-wrapper"
+      <div className="table-view-container">
+        <div style={{ display: "flex", justifyContent: "flex-end", padding: "0.5rem 1rem" }}>
+          <button
+            onClick={() => exportCSV(rows, columns)}
+            style={{
+              padding: "0.4rem 1rem",
+              cursor: "pointer",
+              borderRadius: "6px",
+              border: "1px solid currentColor",
+              background: "transparent",
+              fontSize: "0.85rem",
+            }}
+          >
+            Export CSV ↓
+          </button>
+        </div>
+        <div
+          className="table-responsive-wrapper"
         style={{ minWidth: "100%", width: "max-content" }}
-      >
+        >
         <table className="data-table">
           <thead>
             <tr>
